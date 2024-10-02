@@ -1,0 +1,29 @@
+  <h2>New book</h2>
+
+  <%= form_with model:@book, url: { action: "index" }, method: :post do |f| %>
+
+    <% if @book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@book.errors.count, "error") %> errors prohibited this book from being saved:</h2>
+
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="form">
+    <h6>Title</h6>
+    <%= f.text_field :title %>
+
+    <h6>Body</h6>
+    <%= f.text_area :body %>
+
+    <div class="create">
+    <%= f.submit 'Create Book' %>
+    </div>
+  </div>
+
+  <% end %>
